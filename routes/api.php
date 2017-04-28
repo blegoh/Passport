@@ -17,10 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/user/lembur','API\LemburController@userLembur');
+
 Route::post('/register','API\RegisterController@store');
 
 
 Route::post('/lembur','API\LemburController@store');
+
 Route::get('/lembur','API\LemburController@index');
+Route::get('/lembur/all','API\LemburController@all');
 Route::get('/lembur/{id}/accept','API\LemburController@accept');
 Route::get('/lembur/{id}/reject','API\LemburController@reject');
