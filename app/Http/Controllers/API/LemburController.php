@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Lembur;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class LemburController extends Controller
 {
+
+
+    /**
+     * LemburController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     public function store(Request $request)
     {
@@ -32,5 +42,27 @@ class LemburController extends Controller
     }
 
 
+    public function accept($id)
+    {
+        $lembur = Lembur::findOrFail($id);
+        $lembur->status = 1;
+        $lembur->update();
+        $data = [
+            'error' => false,
+            'data' => $lembur
+        ];
+        return response()->json($data,200);
+    }
+
+    public function reject($id)
+    {
+        $lembur = Lembur::findOrFail($id);
+        $lembur->delete();
+        $data = [
+            'error' => false,
+            'data' => []
+        ];
+        return response()->json($data,200);
+    }
 
 }
