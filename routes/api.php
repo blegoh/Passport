@@ -21,6 +21,6 @@ Route::post('/register','API\RegisterController@store');
 
 
 Route::post('/lembur','API\LemburController@store');
-
+Route::get('/lembur','API\LemburController@index');
 Route::get('/lembur/{id}/accept','API\LemburController@accept');
-Route::post('/lembur/{id}/reject','API\LemburController@reject');
+Route::get('/lembur/{id}/reject','API\LemburController@reject');
