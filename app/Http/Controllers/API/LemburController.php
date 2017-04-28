@@ -44,6 +44,8 @@ class LemburController extends Controller
 
     public function accept($id)
     {
+        $this->authorize('accept');
+
         $lembur = Lembur::findOrFail($id);
         $lembur->status = 1;
         $lembur->update();
@@ -56,6 +58,8 @@ class LemburController extends Controller
 
     public function reject($id)
     {
+        $this->authorize('accept');
+
         $lembur = Lembur::findOrFail($id);
         $lembur->delete();
         $data = [
