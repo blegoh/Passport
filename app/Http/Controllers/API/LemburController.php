@@ -18,12 +18,31 @@ class LemburController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function userLembur(Request $request)
+    {
+        $data = [
+            'error' => false,
+            'data' => $request->user()->lemburs
+        ];
+        return response()->json($data,200);
+    }
+
     public function index()
     {
         $this->authorize('accept');
         $data = [
             'error' => false,
             'data' => Lembur::where('status',0)->get()
+        ];
+        return response()->json($data,200);
+    }
+
+    public function all()
+    {
+        $this->authorize('accept');
+        $data = [
+            'error' => false,
+            'data' => Lembur::all()
         ];
         return response()->json($data,200);
     }
