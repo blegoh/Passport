@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/register','API\RegisterController@store');
 
-Route::post('/lembur','API\LemburController@store');
+
+Route::middleware('auth:api')->post('/lembur','API\LemburController@store');

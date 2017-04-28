@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lembur extends Model
 {
 
-    protected $fillable = ['user_id','tangal_lembur','alasan','fee'];
+    protected $fillable = ['user_id','tanggal_lembur','jam','alasan','fee'];
 
     public function user()
     {

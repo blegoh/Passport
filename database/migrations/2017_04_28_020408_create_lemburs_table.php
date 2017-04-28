@@ -17,6 +17,7 @@ class CreateLembursTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->date('tanggal_lembur');
+            $table->unsignedInteger('jam');
             $table->string('alasan');
             $table->unsignedInteger('fee')->default(0);
             $table->boolean('status')->default(false);
