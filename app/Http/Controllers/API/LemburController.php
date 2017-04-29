@@ -90,10 +90,11 @@ class LemburController extends Controller
         $this->authorize('accept');
 
         $lembur = Lembur::findOrFail($id);
-        $lembur->delete();
+        $lembur->status = 1;
+        $lembur->update();
         $data = [
             'error' => false,
-            'data' => []
+            'data' => $lembur
         ];
         return response()->json($data,200);
     }
