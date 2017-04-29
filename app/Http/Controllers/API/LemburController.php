@@ -20,12 +20,9 @@ class LemburController extends Controller
 
     public function userLembur(Request $request)
     {
-        $dt = $request->user()->lemburs;
-        $dt['name'] = $request->user()->name;
-        $dt['jabatan'] = $request->user()->jabatan;
         $data = [
             'error' => false,
-            'data' => $dt
+            'data' => $request->user()->lemburs
         ];
         return response()->json($data,200);
     }
